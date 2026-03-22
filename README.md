@@ -1,69 +1,126 @@
 # hfpaper
 
-Hugging Face Papers CLI - Fast, agent-consumable access to AI research papers.
+AI research papers from your terminal. Search, read, and explore the full Hugging Face Papers ecosystem from the command line.
 
-## Features
+**[hfpaper.gabl.us](https://hfpaper.gabl.us)** · **[GitHub](https://github.com/zakelfassi/hfpaper)**
 
-- **Search**: Semantic and full-text search across Hugging Face papers.
-- **Read**: Fetch any paper directly as Markdown.
-- **Metadata**: Structured JSON for paper details, authors, upvotes, and linked assets.
-- **Daily**: Get the daily trending papers feed.
-- **Linked Assets**: Find models, datasets, and spaces linked to a paper.
-- **Index**: Trigger indexing of new papers on Hugging Face (requires `HF_TOKEN`).
+## Install
 
-## Installation
-
-### From Source
 ```bash
+# From source
+go install github.com/zakelfassi/hfpaper@latest
+
+# Or clone and build
 git clone https://github.com/zakelfassi/hfpaper
-cd hfpaper
-make build
-# Or install to $GOPATH/bin
-make install
+cd hfpaper && make build
 ```
+
+Prebuilt binaries for Linux, macOS, and Windows are available on the [Releases](https://github.com/zakelfassi/hfpaper/releases) page.
 
 ## Usage
 
-### Examples
-
 ```bash
-# Search for vision-language papers
-hfpaper search "vision language" --limit 5
+# Search for papers
+hfpaper search "vision language models" --limit 5
 
-# Get paper metadata
+# Get structured metadata (authors, abstract, GitHub, upvotes)
 hfpaper get 2602.08025
 
-# Read paper as markdown (perfect for LLMs)
-hfpaper read 2602.08025 > paper.md
+# Read the full paper as markdown
+hfpaper read 2602.08025
 
-# Get daily papers feed
+# Today's trending papers
 hfpaper daily --trending
 
-# Find models linked to a paper
+# Find linked models, datasets, or spaces
 hfpaper models 2602.08025
+hfpaper datasets 2602.08025
+hfpaper spaces 2602.08025
+
+# Index a new paper on HF (requires HF_TOKEN)
+hfpaper index 2503.12345
 ```
+
+## Paper ID Formats
+
+hfpaper accepts any of these and extracts the arXiv ID automatically:
+
+| Input | Parsed ID |
+|-------|-----------|
+| `2602.08025` | `2602.08025` |
+| `2602.08025v1` | `2602.08025v1` |
+| `https://huggingface.co/papers/2602.08025` | `2602.08025` |
+| `https://huggingface.co/papers/2602.08025.md` | `2602.08025` |
+| `https://arxiv.org/abs/2602.08025` | `2602.08025` |
+| `https://arxiv.org/pdf/2602.08025` | `2602.08025` |
 
 ## Output Formats
 
-`hfpaper` automatically detects if it's being run in a TTY.
-- **Human mode** (TTY): Readable text/markdown.
-- **Agent mode** (Redirected/Pipe): Raw JSON output.
-- Explicit flags: `--json`, `--markdown`, `--table`.
+hfpaper auto-detects context:
+
+- **TTY** (interactive terminal): human-readable text/markdown
+- **Piped/redirected** (non-interactive): raw JSON for parsing
+
+Override with flags: `--json`, `--table`, `--markdown`
+
+```bash
+# Pipe JSON to jq
+hfpaper search "RLHF" --json | jq '.[0].paper.title'
+
+# Save a paper as markdown
+hfpaper read 2602.08025 > paper.md
+
+# Feed a paper to an LLM
+hfpaper read 2602.08025 | llm "summarize this paper in 3 bullets"
+```
+
+## Use with AI Agents
+
+hfpaper is designed to be consumed by AI coding agents (Claude, Codex, Cursor, etc). Drop [`AGENTS.md`](./AGENTS.md) into your project or reference it in your agent's skill/tool config.
+
+### Claude Code / Codex
+
+Add to your project's `AGENTS.md` or system prompt:
+
+```
+You have access to `hfpaper`, a CLI for AI research papers.
+- Search: `hfpaper search "<query>" --json`
+- Read: `hfpaper read <arxiv_id>`
+- Trending: `hfpaper daily --trending --json`
+- Metadata: `hfpaper get <arxiv_id> --json`
+- Models: `hfpaper models <arxiv_id> --json`
+```
+
+### OpenClaw / Custom Agents
+
+Copy `AGENTS.md` to your agent's workspace. It contains the full command reference, paper ID format docs, and usage examples optimized for agent consumption.
+
+### MCP (coming soon)
+
+`hfpaper mcp` will start an MCP server exposing all commands as tools — usable by any MCP-compatible client.
 
 ## Authentication
 
-Set the `HF_TOKEN` environment variable for authenticated requests and write operations (like `index`).
+Most commands work without authentication. Set `HF_TOKEN` for write operations:
 
 ```bash
-export HF_TOKEN=your_token_here
+export HF_TOKEN=hf_xxxxx
+hfpaper index 2503.12345
 ```
-
-## MCP Integration
-
-This tool is designed to be easily wrapped by Model Context Protocol (MCP) servers. You can call its subcommands from any agentic workflow to fetch research context on the fly.
 
 ## Development
 
-- `make build`: Build local binary.
-- `make test`: Run tests and vet.
-- `make release`: Cross-compile for all targets.
+```bash
+make build      # Build local binary
+make install    # Install to $GOPATH/bin
+make test       # Run tests + vet
+make release    # Cross-compile (linux/mac/windows, amd64/arm64)
+```
+
+## License
+
+MIT — see [LICENSE](./LICENSE)
+
+---
+
+Built by [Zak El Fassi](https://github.com/zakelfassi)
