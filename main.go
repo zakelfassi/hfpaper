@@ -56,6 +56,9 @@ func main() {
 	rootCmd.AddCommand(datasetsCmd)
 	rootCmd.AddCommand(spacesCmd)
 	rootCmd.AddCommand(indexCmd)
+	rootCmd.AddCommand(citeCmd)
+	rootCmd.AddCommand(summaryCmd)
+	rootCmd.AddCommand(openCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
