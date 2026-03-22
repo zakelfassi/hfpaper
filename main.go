@@ -59,6 +59,7 @@ func main() {
 	rootCmd.AddCommand(citeCmd)
 	rootCmd.AddCommand(summaryCmd)
 	rootCmd.AddCommand(openCmd)
+	rootCmd.AddCommand(mcpCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)

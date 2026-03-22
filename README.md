@@ -95,9 +95,35 @@ You have access to `hfpaper`, a CLI for AI research papers.
 
 Copy `AGENTS.md` to your agent's workspace. It contains the full command reference, paper ID format docs, and usage examples optimized for agent consumption.
 
-### MCP (coming soon)
+### MCP Server
 
-`hfpaper mcp` will start an MCP server exposing all commands as tools — usable by any MCP-compatible client.
+`hfpaper mcp` starts a Model Context Protocol server over stdio, exposing all commands as tools. Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
+
+**Claude Desktop** — add to `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "hfpaper": {
+      "command": "hfpaper",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+**Cursor** — add to `.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    "hfpaper": {
+      "command": "hfpaper",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+**Available MCP tools:** `search_papers`, `get_paper`, `read_paper`, `daily_papers`, `paper_models`, `paper_datasets`, `paper_spaces`
 
 ## Authentication
 
