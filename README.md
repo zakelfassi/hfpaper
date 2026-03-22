@@ -7,6 +7,9 @@ AI research papers from your terminal. Search, read, and explore the full Huggin
 ## Install
 
 ```bash
+# Via Homebrew
+brew install zakelfassi/tap/hfpaper
+
 # From source
 go install github.com/zakelfassi/hfpaper@latest
 
