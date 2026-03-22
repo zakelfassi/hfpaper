@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hfpaper — AI research papers from your terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFCFA;           /* warm paper white */
+            --surface: #F5F0EB;      /* parchment surface */
+            --surface-hover: #EDE7DF; /* hover state */
+            --text-primary: #1A1A1A;  /* near-black */
+            --text-secondary: #5C5648; /* warm gray */
+            --text-muted: #9B917F;    /* muted warm */
+            --accent: #D4622B;        /* burnt sienna — warm, scholarly */
+            --accent-hover: #B85321;  /* darker sienna */
+            --accent-soft: #FFF0E8;   /* soft accent bg */
+            --code-bg: #2D2A26;       /* dark warm for code blocks */
+            --code-text: #E8DFD3;     /* warm light for code */
+            --border: #E5DED4;        /* subtle warm border */
+            --shadow: rgba(26, 26, 26, 0.06);
+            
+            --font-display: 'Fraunces', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, var(--surface) 0%, var(--bg) 100%);
+        }
+
+        .brand {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 4vw, 2.25rem);
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+        }
+
+        .cta-group {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Terminal Demo */
+        .demo-section {
+            padding: 8rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .terminal {
+            background-color: var(--code-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px var(--shadow);
+            font-family: var(--font-code);
+            font-size: 0.95rem;
+            color: var(--code-text);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .terminal-line {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .terminal-line.reveal {
+            animation: slideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .prompt { color: var(--accent); font-weight: bold; margin-right: 0.5rem; }
+        .command { color: var(--code-text); }
+        .output { color: var(--text-muted); display: block; margin-top: 0.5rem; white-space: pre-wrap; }
+
+        /* Features */
+        .features-section {
+            padding: 8rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem 6rem;
+        }
+
+        @media (max-width: 768px) {
+            .features-section { grid-template-columns: 1fr; }
+        }
+
+        .feature {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature.reveal {
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .feature-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        /* Install */
+        .install-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background-color: var(--surface);
+        }
+
+        .install-box {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: var(--font-code);
+            color: var(--code-text);
+            position: relative;
+            text-align: left;
+        }
+
+        .binary-note {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        footer a:hover { border-color: var(--text-secondary); }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .section-divider {
+            height: 1px;
+            background-color: var(--border);
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1 class="brand">hfpaper</h1>
+        <p class="tagline">AI research papers from your terminal.</p>
+        <div class="cta-group">
+            <a href="https://github.com/zakelfassi/hfpaper" class="btn">View on GitHub</a>
+        </div>
+    </section>
+
+    <section class="demo-section">
+        <div class="terminal" id="terminal">
+            <div class="terminal-line" style="animation-delay: 0.1s;">
+                <span class="prompt">$</span><span class="command">hfpaper search "multimodal reasoning" --limit 5</span>
+                <span class="output">Searching Hugging Face Papers...
+1. [2402.XXXX] LLaVA-Next: Stronger reasoning...
+2. [2401.XXXX] CogVLM: Visual Expert for...</span>
+            </div>
+            <div class="terminal-line" style="animation-delay: 0.3s;">
+                <span class="prompt">$</span><span class="command">hfpaper daily --trending</span>
+                <span class="output">Top trending today:
+- 2602.08025: DeepSeek-V4 Technical Report
+- 2602.07123: Scaling Laws for Video Gen</span>
+            </div>
+            <div class="terminal-line" style="animation-delay: 0.5s;">
+                <span class="prompt">$</span><span class="command">hfpaper read 2602.08025</span>
+                <span class="output"># DeepSeek-V4: Multi-Token Prediction...
+[Full paper content rendered as Markdown]</span>
+            </div>
+            <div class="terminal-line" style="animation-delay: 0.7s;">
+                <span class="prompt">$</span><span class="command">hfpaper models 2602.08025 --json</span>
+                <span class="output">[{"id": "deepseek-ai/DeepSeek-V4", "type": "model"}]</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="features-section">
+        <div class="feature">
+            <h3 class="feature-title">Search</h3>
+            <p class="feature-desc">Semantic and full-text search across the entire Hugging Face paper library. Find what you need without leaving the shell.</p>
+        </div>
+        <div class="feature">
+            <h3 class="feature-title">Read</h3>
+            <p class="feature-desc">Pull full paper content as clean Markdown. Perfect for reading in the terminal or piping into your favorite LLM for analysis.</p>
+        </div>
+        <div class="feature">
+            <h3 class="feature-title">Explore</h3>
+            <p class="feature-desc">Instantly discover linked models, datasets, and spaces associated with any paper. Bridge the gap between research and code.</p>
+        </div>
+        <div class="feature">
+            <h3 class="feature-title">Agent-ready</h3>
+            <p class="feature-desc">Native JSON output mode and a zero-dependency 7.8MB binary make it the perfect tool for AI agents and automation scripts.</p>
+        </div>
+    </section>
+
+    <section class="install-section">
+        <h2 class="feature-title" style="margin-bottom: 2rem;">Quick Install</h2>
+        <div class="install-box">
+            go install github.com/zakelfassi/hfpaper@latest
+        </div>
+        <p class="binary-note">Or download the pre-compiled binary for your architecture from GitHub Releases.</p>
+    </section>
+
+    <footer>
+        <p>Built by <a href="https://github.com/zakelfassi">Zak El Fassi</a></p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature, .terminal-line').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

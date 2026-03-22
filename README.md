@@ -2,7 +2,7 @@
 
 AI research papers from your terminal. Search, read, and explore the full Hugging Face Papers ecosystem from the command line.
 
-**[hfpaper.gabl.us](https://hfpaper.gabl.us)** · **[GitHub](https://github.com/zakelfassi/hfpaper)**
+**[zakelfassi.github.io/hfpaper](https://zakelfassi.github.io/hfpaper)** · **[GitHub](https://github.com/zakelfassi/hfpaper)**
 
 ## Install
 
