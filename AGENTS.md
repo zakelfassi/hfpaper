@@ -67,6 +67,21 @@ hfpaper models 2602.08025 --json
 hfpaper get 2602.08025 --json
 ```
 
+## MCP (zero-install)
+
+If your host supports MCP, add this config — no install needed:
+
+```json
+{
+  "mcpServers": {
+    "hfpaper": {
+      "command": "npx",
+      "args": ["-y", "hfpaper", "mcp"]
+    }
+  }
+}
+```
+
 ## Tips
 
 - `read` output can be long (full paper). Use `head -200` or `--limit` if you just need the abstract and intro.

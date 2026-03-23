@@ -102,19 +102,21 @@ Copy `AGENTS.md` to your agent's workspace. It contains the full command referen
 
 `hfpaper mcp` starts a Model Context Protocol server over stdio, exposing all commands as tools. Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 
-**Claude Desktop** — add to `claude_desktop_config.json`:
+**Zero-install (recommended)** — uses npx, no pre-install needed:
 ```json
 {
   "mcpServers": {
     "hfpaper": {
-      "command": "hfpaper",
-      "args": ["mcp"]
+      "command": "npx",
+      "args": ["-y", "hfpaper", "mcp"]
     }
   }
 }
 ```
 
-**Cursor** — add to `.cursor/mcp.json`:
+Drop that into your Claude Desktop config (`claude_desktop_config.json`), Cursor (`.cursor/mcp.json`), or Windsurf settings. Done.
+
+**If hfpaper is already installed:**
 ```json
 {
   "mcpServers": {
