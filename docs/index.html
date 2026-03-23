@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hfpaper — AI research papers from your terminal</title>
     <meta name="description" content="Search, read, cite, and explore AI research papers from the command line. MCP server included. One binary, zero deps.">
+    <meta property="og:title" content="hfpaper — AI research papers from your terminal">
+    <meta property="og:description" content="Search, read, cite, and explore 500K+ AI papers. MCP server for Claude/Cursor. One binary, zero deps.">
+    <meta property="og:url" content="https://hfpaper.zakelfassi.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,251 +32,63 @@
             --font-body: 'DM Sans', sans-serif;
             --font-code: 'JetBrains Mono', monospace;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text-primary); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-        body {
-            background: var(--bg);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ── Hero ── */
-        .hero {
-            min-height: 100svh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: radial-gradient(ellipse at 50% 40%, var(--surface) 0%, var(--bg) 70%);
-        }
-
-        .brand {
-            font-family: var(--font-display);
-            font-size: clamp(4.5rem, 14vw, 11rem);
-            font-weight: 900;
-            line-height: 0.95;
-            color: var(--text-primary);
-            letter-spacing: -0.03em;
-            opacity: 0; transform: translateY(24px);
-            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
-        }
-
-        .tagline {
-            font-family: var(--font-display);
-            font-size: clamp(1.15rem, 3.5vw, 2rem);
-            font-style: italic;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-top: 1rem;
-            margin-bottom: 2.5rem;
-            opacity: 0; transform: translateY(24px);
-            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            opacity: 0; transform: translateY(24px);
-            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.875rem 2.25rem;
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.25s ease;
-        }
+        /* Hero */
+        .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; background: radial-gradient(ellipse at 50% 40%, var(--surface) 0%, var(--bg) 70%); }
+        .brand { font-family: var(--font-display); font-size: clamp(4.5rem, 14vw, 11rem); font-weight: 900; line-height: 0.95; color: var(--text-primary); letter-spacing: -0.03em; opacity: 0; transform: translateY(24px); animation: fadeUp 0.8s cubic-bezier(0.2,0.8,0.2,1) 0.1s forwards; }
+        .tagline { font-family: var(--font-display); font-size: clamp(1.15rem, 3.5vw, 2rem); font-style: italic; font-weight: 400; color: var(--text-secondary); margin-top: 1rem; margin-bottom: 2.5rem; opacity: 0; transform: translateY(24px); animation: fadeUp 0.8s cubic-bezier(0.2,0.8,0.2,1) 0.3s forwards; }
+        .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; opacity: 0; transform: translateY(24px); animation: fadeUp 0.8s cubic-bezier(0.2,0.8,0.2,1) 0.5s forwards; }
+        .btn { display: inline-block; padding: 0.875rem 2.25rem; font-family: var(--font-body); font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 4px; transition: all 0.25s ease; }
         .btn-primary { background: var(--accent); color: #fff; }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 1.5px solid var(--border); }
         .btn-secondary:hover { border-color: var(--text-secondary); transform: translateY(-2px); }
 
-        /* ── Terminal Demo ── */
-        .demo {
-            padding: 6rem 2rem 8rem;
-            max-width: 860px;
-            margin: 0 auto;
-        }
+        /* Sections */
+        .section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+        .section-wide { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .section-label { font-family: var(--font-code); font-size: 0.8rem; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+        .section-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; line-height: 1.15; color: var(--text-primary); margin-bottom: 1.25rem; }
+        .section-body { font-size: 1.125rem; color: var(--text-secondary); max-width: 640px; }
 
-        .terminal {
-            background: var(--code-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 24px 48px var(--shadow), 0 4px 12px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255,255,255,0.04);
-        }
+        /* Screenshot gallery */
+        .screenshots { display: flex; flex-direction: column; gap: 4rem; margin-top: 3rem; }
+        .screenshot-item { opacity: 0; transform: translateY(24px); }
+        .screenshot-item.reveal { animation: fadeUp 0.7s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+        .screenshot-label { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .screenshot-desc { color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.25rem; }
+        .screenshot-img { width: 100%; max-width: 620px; border-radius: 10px; box-shadow: 0 24px 48px var(--shadow), 0 4px 12px rgba(0,0,0,0.04); }
+        .screenshot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        @media (max-width: 768px) { .screenshot-pair { grid-template-columns: 1fr; } }
 
-        .terminal-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 18px;
-            background: rgba(0,0,0,0.15);
-        }
-        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-dot:nth-child(1) { background: #FF5F56; }
-        .terminal-dot:nth-child(2) { background: #FFBD2E; }
-        .terminal-dot:nth-child(3) { background: #27C93F; }
-        .terminal-title {
-            flex: 1; text-align: center;
-            font-family: var(--font-code); font-size: 0.75rem;
-            color: var(--code-muted); margin-right: 52px;
-        }
-
-        .terminal-body {
-            padding: 1.75rem 2rem 2rem;
-            font-family: var(--font-code);
-            font-size: 0.88rem;
-            line-height: 1.7;
-            color: var(--code-text);
-        }
-
-        .term-block {
-            margin-bottom: 1.75rem;
-            opacity: 0; transform: translateX(-16px);
-        }
-        .term-block.reveal { animation: slideIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        .term-block:last-child { margin-bottom: 0; }
-
-        .prompt { color: var(--accent); font-weight: 500; }
-        .cmd { color: var(--code-text); }
-        .flag { color: var(--code-accent); }
-        .out { color: var(--code-muted); display: block; margin-top: 4px; white-space: pre-wrap; font-size: 0.82rem; }
-
-        /* ── Sections ── */
-        .section { padding: 7rem 2rem; max-width: 900px; margin: 0 auto; }
-        .section-wide { padding: 7rem 2rem; max-width: 1100px; margin: 0 auto; }
-        .section-surface { background: var(--surface); }
-
-        .section-label {
-            font-family: var(--font-code);
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3.25rem);
-            font-weight: 700;
-            line-height: 1.15;
-            color: var(--text-primary);
-            margin-bottom: 1.25rem;
-        }
-
-        .section-body {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 640px;
-        }
-
-        /* ── Features (cardless) ── */
-        .features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem 5rem;
-            margin-top: 4rem;
-        }
-        @media (max-width: 680px) { .features { grid-template-columns: 1fr; gap: 3rem; } }
-
-        .feat { opacity: 0; transform: translateY(24px); }
-        .feat.reveal { animation: fadeUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-
-        .feat-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .feat-desc { color: var(--text-secondary); font-size: 1.05rem; }
-
-        /* ── MCP ── */
-        .mcp-config {
-            background: var(--code-bg);
-            border-radius: 8px;
-            padding: 1.5rem 2rem;
-            font-family: var(--font-code);
-            font-size: 0.85rem;
-            color: var(--code-text);
-            margin-top: 2rem;
-            overflow-x: auto;
-            line-height: 1.6;
-        }
+        /* MCP */
+        .mcp-config { background: var(--code-bg); border-radius: 8px; padding: 1.5rem 2rem; font-family: var(--font-code); font-size: 0.88rem; color: var(--code-text); margin-top: 2rem; overflow-x: auto; line-height: 1.7; max-width: 500px; }
         .mcp-key { color: var(--code-accent); }
         .mcp-str { color: #A8C97F; }
 
-        /* ── Install Grid ── */
-        .install-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            max-width: 700px;
-        }
+        /* Install */
+        .install-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; max-width: 700px; }
         @media (max-width: 600px) { .install-grid { grid-template-columns: 1fr; } }
+        .install-item { background: var(--code-bg); border-radius: 6px; padding: 1.25rem 1.5rem; font-family: var(--font-code); font-size: 0.82rem; color: var(--code-text); opacity: 0; transform: translateY(16px); }
+        .install-item.reveal { animation: fadeUp 0.6s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+        .install-label { display: block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
 
-        .install-item {
-            background: var(--code-bg);
-            border-radius: 6px;
-            padding: 1.25rem 1.5rem;
-            font-family: var(--font-code);
-            font-size: 0.82rem;
-            color: var(--code-text);
-            opacity: 0; transform: translateY(16px);
-        }
-        .install-item.reveal { animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        .install-label {
-            display: block;
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.5rem;
-        }
-
-        /* ── Divider ── */
+        /* Divider */
         .divider { height: 1px; background: var(--border); max-width: 120px; margin: 0 auto; }
 
-        /* ── Footer ── */
-        footer {
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+        /* Footer */
+        footer { padding: 4rem 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+        footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: var(--accent); }
 
-        /* ── Animations ── */
+        /* Animations */
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body>
 
-    <!-- Hero: brand + tagline + CTA. Nothing else. -->
     <section class="hero">
         <h1 class="brand">hfpaper</h1>
         <p class="tagline">AI research papers from your terminal.</p>
@@ -283,120 +98,92 @@
         </div>
     </section>
 
-    <!-- Terminal Demo -->
-    <section class="demo">
-        <div class="terminal">
-            <div class="terminal-bar">
-                <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
-                <span class="terminal-title">hfpaper</span>
-            </div>
-            <div class="terminal-body">
-                <div class="term-block">
-                    <span class="prompt">$</span> <span class="cmd">hfpaper search</span> <span class="flag">"multimodal reasoning"</span> <span class="cmd">--limit 3</span>
-                    <span class="out">1. MIND: Benchmarking Memory Consistency...  2602.08025  12⬆
-2. LLaVA-Next: Stronger Visual Reasoning...   2401.16420  89⬆
-3. CogVLM: Visual Expert for Pretrained...     2311.03079  45⬆</span>
-                </div>
-                <div class="term-block">
-                    <span class="prompt">$</span> <span class="cmd">hfpaper cite</span> <span class="flag">2602.08025</span> <span class="cmd">--format apa</span>
-                    <span class="out">Ye, Y., Lu, X., Jiang, Y., ... Wang, A. J. (2026).
-MIND: Benchmarking Memory Consistency and Action
-Control in World Models. arXiv:2602.08025.</span>
-                </div>
-                <div class="term-block">
-                    <span class="prompt">$</span> <span class="cmd">hfpaper summary</span> <span class="flag">2602.08025</span>
-                    <span class="out">MIND is the first open-domain closed-loop benchmark
-for evaluating memory consistency and action control
-in world models.</span>
-                </div>
-                <div class="term-block">
-                    <span class="prompt">$</span> <span class="cmd">hfpaper daily</span> <span class="flag">--trending</span> <span class="cmd">--limit 3 --json</span> <span class="flag">| jq '.[].title'</span>
-                    <span class="out">"DreamPartGen: Part-Level 3D Generation"
-"What Controls Temporal Reasoning in LLMs"
-"VID-AD: Logical Anomaly Detection"</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Features: cardless, one job per item -->
+    <!-- Screenshots gallery -->
     <section class="section-wide">
-        <div class="section-label">What it does</div>
-        <h2 class="section-title">Search. Read. Cite. Explore.</h2>
-        <p class="section-body">One binary wraps the entire Hugging Face Papers API. Semantic search, full paper markdown, BibTeX citations, linked models — all from the terminal.</p>
+        <div class="section-label">See it in action</div>
+        <h2 class="section-title">Every command, one binary.</h2>
+        <p class="section-body">Search 500K+ papers, read full content as markdown, generate citations, and explore linked models — all from the terminal.</p>
 
-        <div class="features">
-            <div class="feat">
-                <h3 class="feat-title">Search</h3>
-                <p class="feat-desc">Semantic + full-text search across 500K+ papers. Natural language queries work.</p>
+        <div class="screenshots">
+            <div class="screenshot-item">
+                <div class="screenshot-label">Search</div>
+                <div class="screenshot-desc">Semantic + full-text search. Natural language works.</div>
+                <img class="screenshot-img" src="../assets/search.svg" alt="hfpaper search">
             </div>
-            <div class="feat">
-                <h3 class="feat-title">Read</h3>
-                <p class="feat-desc">Full paper as clean markdown. Pipe to an LLM, save to disk, or read in the terminal.</p>
+
+            <div class="screenshot-pair">
+                <div class="screenshot-item">
+                    <div class="screenshot-label">Paper details</div>
+                    <div class="screenshot-desc">Authors, abstract, GitHub, upvotes.</div>
+                    <img class="screenshot-img" src="../assets/get.svg" alt="hfpaper get">
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-label">Citations</div>
+                    <div class="screenshot-desc">BibTeX, APA, or MLA. One command.</div>
+                    <img class="screenshot-img" src="../assets/cite.svg" alt="hfpaper cite">
+                </div>
             </div>
-            <div class="feat">
-                <h3 class="feat-title">Cite</h3>
-                <p class="feat-desc">Generate BibTeX, APA, or MLA citations from any paper ID. One command.</p>
-            </div>
-            <div class="feat">
-                <h3 class="feat-title">Explore</h3>
-                <p class="feat-desc">Find linked models, datasets, and Spaces for any paper. Bridge research to code.</p>
+
+            <div class="screenshot-item">
+                <div class="screenshot-label">Daily trending</div>
+                <div class="screenshot-desc">Today's papers, ranked by upvotes.</div>
+                <img class="screenshot-img" src="../assets/daily.svg" alt="hfpaper daily">
             </div>
         </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- MCP: the killer feature -->
+    <!-- MCP -->
     <section class="section">
         <div class="section-label">For agents</div>
         <h2 class="section-title">MCP server included.</h2>
-        <p class="section-body">Run <code style="font-family:var(--font-code);background:var(--surface);padding:2px 6px;border-radius:3px;">hfpaper mcp</code> to start a Model Context Protocol server. Your agent can search, read, and cite papers natively. 7 tools, stdio transport.</p>
+        <p class="section-body">Paste this config. Your agent can search, read, and cite papers natively. 7 tools, zero install.</p>
 
         <div class="mcp-config">
-            <span class="mcp-key">"mcpServers"</span>: {<br>
-            &nbsp;&nbsp;<span class="mcp-key">"hfpaper"</span>: {<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="mcp-key">"command"</span>: <span class="mcp-str">"npx"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="mcp-key">"args"</span>: [<span class="mcp-str">"-y"</span>, <span class="mcp-str">"hfpaper"</span>, <span class="mcp-str">"mcp"</span>]<br>
+            {<br>
+            &nbsp;&nbsp;<span class="mcp-key">"mcpServers"</span>: {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="mcp-key">"hfpaper"</span>: {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mcp-key">"command"</span>: <span class="mcp-str">"npx"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mcp-key">"args"</span>: [<span class="mcp-str">"-y"</span>, <span class="mcp-str">"hfpaper"</span>, <span class="mcp-str">"mcp"</span>]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
             &nbsp;&nbsp;}<br>
             }
         </div>
-        <p style="margin-top:1rem;color:var(--text-muted);font-size:0.9rem;">Zero install. Paste this into Claude Desktop, Cursor, or Windsurf. That's it.</p>
+        <p style="margin-top:1rem;color:var(--text-muted);font-size:0.9rem;">Works with Claude Desktop, Cursor, Windsurf, and any MCP client.</p>
     </section>
 
     <div class="divider"></div>
 
-    <!-- Install: 4 paths -->
+    <!-- More commands -->
     <section class="section">
-        <div class="section-label">Install</div>
-        <h2 class="section-title">Pick your path.</h2>
-        <p class="section-body">npm, Homebrew, Go, or a raw binary. No API key needed for read operations.</p>
-
-        <div class="install-grid">
-            <div class="install-item">
-                <span class="install-label">npm</span>
-                npm install -g hfpaper
-            </div>
-            <div class="install-item">
-                <span class="install-label">Homebrew</span>
-                brew install zakelfassi/tap/hfpaper
-            </div>
-            <div class="install-item">
-                <span class="install-label">Go</span>
-                go install github.com/zakelfassi/hfpaper@latest
-            </div>
-            <div class="install-item">
-                <span class="install-label">Binary</span>
-                <a href="https://github.com/zakelfassi/hfpaper/releases" style="color:var(--code-accent);text-decoration:none;">Download from Releases →</a>
-            </div>
+        <div class="section-label">Also</div>
+        <h2 class="section-title">Read. Summarize. Explore.</h2>
+        <p class="section-body" style="margin-bottom: 2rem;">Full paper as markdown. AI summaries. Linked models, datasets, and Spaces for any paper.</p>
+        <div style="background:var(--code-bg);border-radius:8px;padding:1.5rem 2rem;font-family:var(--font-code);font-size:0.88rem;color:var(--code-text);line-height:2;max-width:580px;">
+            <span style="color:var(--accent);font-weight:700;">$</span> hfpaper read 2602.08025 <span style="color:var(--code-muted);"># full paper as markdown</span><br>
+            <span style="color:var(--accent);font-weight:700;">$</span> hfpaper summary 2602.08025 <span style="color:var(--code-muted);"># AI one-liner</span><br>
+            <span style="color:var(--accent);font-weight:700;">$</span> hfpaper models 2602.08025 <span style="color:var(--code-muted);"># linked HF models</span><br>
+            <span style="color:var(--accent);font-weight:700;">$</span> hfpaper datasets 2602.08025 <span style="color:var(--code-muted);"># linked datasets</span><br>
+            <span style="color:var(--accent);font-weight:700;">$</span> hfpaper open 2602.08025 <span style="color:var(--code-muted);"># open in browser</span>
         </div>
     </section>
 
-    <!-- Footer -->
+    <div class="divider"></div>
+
+    <!-- Install -->
+    <section class="section">
+        <div class="section-label">Install</div>
+        <h2 class="section-title">Pick your path.</h2>
+        <p class="section-body">npm, Homebrew, Go, or a raw binary. No API key needed.</p>
+        <div class="install-grid">
+            <div class="install-item"><span class="install-label">npm</span>npm install -g hfpaper</div>
+            <div class="install-item"><span class="install-label">Homebrew</span>brew install zakelfassi/tap/hfpaper</div>
+            <div class="install-item"><span class="install-label">Go</span>go install github.com/zakelfassi/hfpaper@latest</div>
+            <div class="install-item"><span class="install-label">Binary</span><a href="https://github.com/zakelfassi/hfpaper/releases" style="color:var(--code-accent);text-decoration:none;">Download from Releases →</a></div>
+        </div>
+    </section>
+
     <footer>
         <p>Built by <a href="https://github.com/zakelfassi">Zak El Fassi</a> · <a href="https://github.com/zakelfassi/hfpaper">GitHub</a> · MIT License</p>
     </footer>
@@ -404,14 +191,10 @@ in world models.</span>
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((e, i) => {
-                if (e.isIntersecting) {
-                    e.target.style.animationDelay = `${i * 0.1}s`;
-                    e.target.classList.add('reveal');
-                }
+                if (e.isIntersecting) { e.target.style.animationDelay = `${i * 0.08}s`; e.target.classList.add('reveal'); }
             });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.feat, .term-block, .install-item').forEach(el => observer.observe(el));
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.screenshot-item, .install-item').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
