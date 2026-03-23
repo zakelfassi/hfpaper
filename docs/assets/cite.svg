@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="392.79999999999995" viewBox="0 0 560 392.79999999999995">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="560" height="392.79999999999995" rx="10" fill="#2D2A26"/>
+  <rect width="560" height="36" rx="10" fill="rgba(0,0,0,0.2)"/>
+  <rect y="26" width="560" height="10" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="16" cy="18" r="6" fill="#FF5F56"/><circle cx="38" cy="18" r="6" fill="#FFBD2E"/><circle cx="60" cy="18" r="6" fill="#27C93F"/>
+  <text x="280" y="22" text-anchor="middle" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="12">hfpaper — cite</text>
+  <g transform="translate(24, 56)">
+    <text y="0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#D4622B" font-weight="700">$ </tspan><tspan x="15.6" fill="#E8DFD3" >hfpaper cite </tspan><tspan x="116.99999999999999" fill="#E8A87C" >2602.08025</tspan></text>
+    <text y="28.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >@article{ye2026260208025,</text>
+    <text y="50.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  title={MIND: Benchmarking Memory Consistency</text>
+    <text y="72.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >         and Action Control in World Models},</text>
+    <text y="94.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  author={Yixuan Ye and Xuanyu Lu and</text>
+    <text y="116.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >          Yuxin Jiang and ...},</text>
+    <text y="138.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  journal={arXiv preprint arXiv:2602.08025},</text>
+    <text y="160.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  year={2026}</text>
+    <text y="182.6" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >}</text>
+    <text y="222.2" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#D4622B" font-weight="700">$ </tspan><tspan x="15.6" fill="#E8DFD3" >hfpaper cite </tspan><tspan x="116.99999999999999" fill="#E8A87C" >2602.08025</tspan><tspan x="195.0" fill="#E8DFD3" > --format apa</tspan></text>
+    <text y="250.79999999999998" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >Ye, Y., Lu, X., Jiang, Y., ... Wang, A. J.</text>
+    <text y="272.79999999999995" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >(2026). MIND: Benchmarking Memory Consistency</text>
+    <text y="294.79999999999995" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >and Action Control. arXiv:2602.08025.</text>
+  </g>
+</svg>

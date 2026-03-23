@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="467.6" viewBox="0 0 620 467.6">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="620" height="467.6" rx="10" fill="#2D2A26"/>
+  <rect width="620" height="36" rx="10" fill="rgba(0,0,0,0.2)"/>
+  <rect y="26" width="620" height="10" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="16" cy="18" r="6" fill="#FF5F56"/><circle cx="38" cy="18" r="6" fill="#FFBD2E"/><circle cx="60" cy="18" r="6" fill="#27C93F"/>
+  <text x="310" y="22" text-anchor="middle" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="12">hfpaper — search</text>
+  <g transform="translate(24, 56)">
+    <text y="0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#D4622B" font-weight="700">$ </tspan><tspan x="15.6" fill="#E8DFD3" >hfpaper search </tspan><tspan x="132.6" fill="#E8A87C" >&quot;multimodal reasoning&quot;</tspan><tspan x="304.2" fill="#E8DFD3" > --limit 3</tspan></text>
+    <text y="33.0" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">🔍 3 results</text>
+    <text y="61.6" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">1. Why Reasoning Matters? A Survey of Advancements in</text>
+    <text y="83.6" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">   Multimodal Reasoning</text>
+    <text y="105.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >   </tspan><tspan x="23.4" fill="#E8A87C" >2504.03151</tspan><tspan x="101.4" fill="#8A7E6E" > · 15 ⬆</tspan></text>
+    <text y="127.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >   Overview of reasoning techniques in LLMs handling</text>
+    <text y="149.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >   both textual and multimodal inputs.</text>
+    <text y="182.6" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">2. Multimodal Reasoning for Science: 1st Place Solution</text>
+    <text y="204.6" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">   to the ICML 2025 SeePhys Challenge</text>
+    <text y="226.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >   </tspan><tspan x="23.4" fill="#E8A87C" >2509.06079</tspan><tspan x="101.4" fill="#8A7E6E" > · 6 ⬆</tspan></text>
+    <text y="248.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >   Caption-assisted reasoning bridges visual and</text>
+    <text y="270.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >   textual modalities for top performance.</text>
+    <text y="303.6" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">3. MDK12-Bench: Multi-Discipline Benchmark for MLLMs</text>
+    <text y="325.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >   </tspan><tspan x="23.4" fill="#E8A87C" >2504.05782</tspan><tspan x="101.4" fill="#8A7E6E" > · 3 ⬆</tspan></text>
+    <text y="347.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >   Evaluates multimodal reasoning with diverse</text>
+    <text y="369.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >   real-world educational tests.</text>
+  </g>
+</svg>
