@@ -144,7 +144,7 @@ var searchCmd = &cobra.Command{
 		query := url.QueryEscape(args[0])
 		path := fmt.Sprintf("/api/papers/search?q=%s&limit=%d", query, limitFlag)
 		resp, err := makeRequest("GET", path, nil, nil)
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "search")
 	},
 }
 
@@ -156,7 +156,7 @@ var getCmd = &cobra.Command{
 		paperID := parsePaperID(args[0])
 		path := fmt.Sprintf("/api/papers/%s", paperID)
 		resp, err := makeRequest("GET", path, nil, nil)
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "get")
 	},
 }
 
@@ -168,7 +168,7 @@ var readCmd = &cobra.Command{
 		paperID := parsePaperID(args[0])
 		path := fmt.Sprintf("/papers/%s.md", paperID)
 		resp, err := makeRequest("GET", path, nil, map[string]string{"Accept": "text/markdown"})
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "read")
 	},
 }
 
@@ -189,7 +189,7 @@ var dailyCmd = &cobra.Command{
 
 		path := "/api/daily_papers?" + params.Encode()
 		resp, err := makeRequest("GET", path, nil, nil)
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "daily")
 	},
 }
 
@@ -201,7 +201,7 @@ var modelsCmd = &cobra.Command{
 		paperID := parsePaperID(args[0])
 		path := fmt.Sprintf("/api/models?filter=arxiv:%s", paperID)
 		resp, err := makeRequest("GET", path, nil, nil)
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "models")
 	},
 }
 
@@ -213,7 +213,7 @@ var datasetsCmd = &cobra.Command{
 		paperID := parsePaperID(args[0])
 		path := fmt.Sprintf("/api/datasets?filter=arxiv:%s", paperID)
 		resp, err := makeRequest("GET", path, nil, nil)
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "datasets")
 	},
 }
 
@@ -225,7 +225,7 @@ var spacesCmd = &cobra.Command{
 		paperID := parsePaperID(args[0])
 		path := fmt.Sprintf("/api/spaces?filter=arxiv:%s", paperID)
 		resp, err := makeRequest("GET", path, nil, nil)
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "spaces")
 	},
 }
 
@@ -238,7 +238,7 @@ var indexCmd = &cobra.Command{
 		payload := map[string]string{"arxivId": paperID}
 		body, _ := json.Marshal(payload)
 		resp, err := makeRequest("POST", "/api/papers/index", strings.NewReader(string(body)), map[string]string{"Content-Type": "application/json"})
-		handleResponse(resp, err)
+		handleFormattedResponse(resp, err, "index")
 	},
 }
 
