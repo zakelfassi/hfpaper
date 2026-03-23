@@ -1,108 +1,65 @@
 # hfpaper
 
-AI research papers from your terminal. Search, read, and explore the full Hugging Face Papers ecosystem from the command line.
+AI research papers from your terminal. Search, read, cite, and explore the full Hugging Face Papers ecosystem from the command line.
 
-**[zakelfassi.github.io/hfpaper](https://zakelfassi.github.io/hfpaper)** · **[GitHub](https://github.com/zakelfassi/hfpaper)**
+**[hfpaper.zakelfassi.com](https://hfpaper.zakelfassi.com)** · **[npm](https://www.npmjs.com/package/hfpaper)** · **[Releases](https://github.com/zakelfassi/hfpaper/releases)**
 
-## Install
+## Search
+
+<p align="center">
+  <img src="assets/search.svg" alt="hfpaper search" width="600">
+</p>
 
 ```bash
-# Via Homebrew
-brew install zakelfassi/tap/hfpaper
-
-# From source
-go install github.com/zakelfassi/hfpaper@latest
-
-# Or clone and build
-git clone https://github.com/zakelfassi/hfpaper
-cd hfpaper && make build
+hfpaper search "multimodal reasoning" --limit 5
 ```
 
-Prebuilt binaries for Linux, macOS, and Windows are available on the [Releases](https://github.com/zakelfassi/hfpaper/releases) page.
+Semantic + full-text search across 500K+ papers. Natural language queries work.
 
-## Usage
+## Get Paper Metadata
+
+<p align="center">
+  <img src="assets/get.svg" alt="hfpaper get" width="560">
+</p>
 
 ```bash
-# Search for papers
-hfpaper search "vision language models" --limit 5
-
-# Get structured metadata (authors, abstract, GitHub, upvotes)
 hfpaper get 2602.08025
-
-# Read the full paper as markdown
-hfpaper read 2602.08025
-
-# Today's trending papers
-hfpaper daily --trending
-
-# Find linked models, datasets, or spaces
-hfpaper models 2602.08025
-hfpaper datasets 2602.08025
-hfpaper spaces 2602.08025
-
-# Index a new paper on HF (requires HF_TOKEN)
-hfpaper index 2503.12345
 ```
 
-## Paper ID Formats
+Structured metadata: authors, abstract, AI summary, GitHub repo, upvotes.
 
-hfpaper accepts any of these and extracts the arXiv ID automatically:
+## Daily Trending
 
-| Input | Parsed ID |
-|-------|-----------|
-| `2602.08025` | `2602.08025` |
-| `2602.08025v1` | `2602.08025v1` |
-| `https://huggingface.co/papers/2602.08025` | `2602.08025` |
-| `https://huggingface.co/papers/2602.08025.md` | `2602.08025` |
-| `https://arxiv.org/abs/2602.08025` | `2602.08025` |
-| `https://arxiv.org/pdf/2602.08025` | `2602.08025` |
-
-## Output Formats
-
-hfpaper auto-detects context:
-
-- **TTY** (interactive terminal): human-readable text/markdown
-- **Piped/redirected** (non-interactive): raw JSON for parsing
-
-Override with flags: `--json`, `--table`, `--markdown`
+<p align="center">
+  <img src="assets/daily.svg" alt="hfpaper daily" width="600">
+</p>
 
 ```bash
-# Pipe JSON to jq
-hfpaper search "RLHF" --json | jq '.[0].paper.title'
-
-# Save a paper as markdown
-hfpaper read 2602.08025 > paper.md
-
-# Feed a paper to an LLM
-hfpaper read 2602.08025 | llm "summarize this paper in 3 bullets"
+hfpaper daily --trending --limit 10
 ```
 
-## Use with AI Agents
+Today's papers, sorted by upvotes. Add `--date 2026-03-22` for a specific day.
 
-hfpaper is designed to be consumed by AI coding agents (Claude, Codex, Cursor, etc). Drop [`AGENTS.md`](./AGENTS.md) into your project or reference it in your agent's skill/tool config.
+## Citations
 
-### Claude Code / Codex
+<p align="center">
+  <img src="assets/cite.svg" alt="hfpaper cite" width="560">
+</p>
 
-Add to your project's `AGENTS.md` or system prompt:
-
-```
-You have access to `hfpaper`, a CLI for AI research papers.
-- Search: `hfpaper search "<query>" --json`
-- Read: `hfpaper read <arxiv_id>`
-- Trending: `hfpaper daily --trending --json`
-- Metadata: `hfpaper get <arxiv_id> --json`
-- Models: `hfpaper models <arxiv_id> --json`
+```bash
+hfpaper cite 2602.08025              # BibTeX (default)
+hfpaper cite 2602.08025 --format apa # APA
+hfpaper cite 2602.08025 --format mla # MLA
 ```
 
-### OpenClaw / Custom Agents
+## MCP Server
 
-Copy `AGENTS.md` to your agent's workspace. It contains the full command reference, paper ID format docs, and usage examples optimized for agent consumption.
+<p align="center">
+  <img src="assets/mcp.svg" alt="hfpaper mcp" width="500">
+</p>
 
-### MCP Server
+**Zero-install** — paste into Claude Desktop / Cursor / Windsurf:
 
-`hfpaper mcp` starts a Model Context Protocol server over stdio, exposing all commands as tools. Works with Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
-
-**Zero-install (recommended)** — uses npx, no pre-install needed:
 ```json
 {
   "mcpServers": {
@@ -114,39 +71,64 @@ Copy `AGENTS.md` to your agent's workspace. It contains the full command referen
 }
 ```
 
-Drop that into your Claude Desktop config (`claude_desktop_config.json`), Cursor (`.cursor/mcp.json`), or Windsurf settings. Done.
+7 tools: `search_papers`, `get_paper`, `read_paper`, `daily_papers`, `paper_models`, `paper_datasets`, `paper_spaces`
 
-**If hfpaper is already installed:**
-```json
-{
-  "mcpServers": {
-    "hfpaper": {
-      "command": "hfpaper",
-      "args": ["mcp"]
-    }
-  }
-}
-```
-
-**Available MCP tools:** `search_papers`, `get_paper`, `read_paper`, `daily_papers`, `paper_models`, `paper_datasets`, `paper_spaces`
-
-## Authentication
-
-Most commands work without authentication. Set `HF_TOKEN` for write operations:
+## All Commands
 
 ```bash
-export HF_TOKEN=hf_xxxxx
-hfpaper index 2503.12345
+hfpaper search <query> [--limit N]           # Search papers
+hfpaper get <paper_id>                        # Paper metadata
+hfpaper read <paper_id>                       # Full paper as markdown
+hfpaper daily [--trending] [--date] [--limit] # Daily papers feed
+hfpaper cite <paper_id> [--format bibtex|apa|mla]  # Generate citation
+hfpaper summary <paper_id>                    # AI-generated summary
+hfpaper open <paper_id>                       # Open in browser
+hfpaper models <paper_id>                     # Linked HF models
+hfpaper datasets <paper_id>                   # Linked HF datasets
+hfpaper spaces <paper_id>                     # Linked HF Spaces
+hfpaper index <paper_id>                      # Index paper (needs HF_TOKEN)
+hfpaper mcp                                   # Start MCP server
 ```
 
-## Development
+## Install
 
 ```bash
-make build      # Build local binary
-make install    # Install to $GOPATH/bin
-make test       # Run tests + vet
-make release    # Cross-compile (linux/mac/windows, amd64/arm64)
+npm install -g hfpaper                              # npm
+brew install zakelfassi/tap/hfpaper                 # Homebrew
+go install github.com/zakelfassi/hfpaper@latest     # Go
 ```
+
+Or download a binary from [Releases](https://github.com/zakelfassi/hfpaper/releases).
+
+## Output Modes
+
+Auto-detects context:
+- **Terminal (TTY)**: rich formatted output with colors and emojis
+- **Piped/redirected**: raw JSON for parsing
+
+Override with flags: `--json`, `--table`, `--markdown`
+
+```bash
+hfpaper search "RLHF" --json | jq '.[0].paper.title'
+hfpaper read 2602.08025 > paper.md
+hfpaper read 2602.08025 | llm "summarize in 3 bullets"
+```
+
+## Paper ID Formats
+
+Accepts any of these — extracts the arXiv ID automatically:
+
+| Input | Parsed ID |
+|-------|-----------|
+| `2602.08025` | `2602.08025` |
+| `2602.08025v1` | `2602.08025v1` |
+| `https://huggingface.co/papers/2602.08025` | `2602.08025` |
+| `https://arxiv.org/abs/2602.08025` | `2602.08025` |
+| `https://arxiv.org/pdf/2602.08025` | `2602.08025` |
+
+## Use with AI Agents
+
+See [`AGENTS.md`](./AGENTS.md) for drop-in instructions for Claude, Codex, Cursor, and OpenClaw agents.
 
 ## License
 

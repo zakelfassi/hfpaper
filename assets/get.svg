@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="368.6" viewBox="0 0 560 368.6">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="560" height="368.6" rx="10" fill="#2D2A26"/>
+  <rect width="560" height="36" rx="10" fill="rgba(0,0,0,0.2)"/>
+  <rect y="26" width="560" height="10" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="16" cy="18" r="6" fill="#FF5F56"/><circle cx="38" cy="18" r="6" fill="#FFBD2E"/><circle cx="60" cy="18" r="6" fill="#27C93F"/>
+  <text x="280" y="22" text-anchor="middle" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="12">hfpaper — get</text>
+  <g transform="translate(24, 56)">
+    <text y="0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#D4622B" font-weight="700">$ </tspan><tspan x="15.6" fill="#E8DFD3" >hfpaper get </tspan><tspan x="109.19999999999999" fill="#E8A87C" >2602.08025</tspan></text>
+    <text y="33.0" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">📄 MIND: Benchmarking Memory Consistency and</text>
+    <text y="55.0" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">   Action Control in World Models</text>
+    <text y="83.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >  </tspan><tspan x="15.6" fill="#8A7E6E" >ID:       </tspan><tspan x="93.6" fill="#E8A87C" >2602.08025</tspan></text>
+    <text y="105.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >  </tspan><tspan x="15.6" fill="#8A7E6E" >Published:</tspan><tspan x="93.6" fill="#E8DFD3" > Feb 8, 2026</tspan></text>
+    <text y="127.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >  </tspan><tspan x="15.6" fill="#8A7E6E" >Authors:  </tspan><tspan x="93.6" fill="#E8DFD3" > Yixuan Ye, Xuanyu Lu, +8 more</tspan></text>
+    <text y="149.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >  </tspan><tspan x="15.6" fill="#8A7E6E" >Upvotes:  </tspan><tspan x="93.6" fill="#E8DFD3" > 12</tspan></text>
+    <text y="171.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >  </tspan><tspan x="15.6" fill="#8A7E6E" >GitHub:   </tspan><tspan x="93.6" fill="#7CAFC2" > github.com/CSU-JPG/MIND</tspan></text>
+    <text y="204.6" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">  Summary:</text>
+    <text y="226.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  First open-domain closed-loop benchmark for</text>
+    <text y="248.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  evaluating memory consistency and action control</text>
+    <text y="270.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  in world models.</text>
+  </g>
+</svg>

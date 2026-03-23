@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="381.8" viewBox="0 0 500 381.8">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="500" height="381.8" rx="10" fill="#2D2A26"/>
+  <rect width="500" height="36" rx="10" fill="rgba(0,0,0,0.2)"/>
+  <rect y="26" width="500" height="10" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="16" cy="18" r="6" fill="#FF5F56"/><circle cx="38" cy="18" r="6" fill="#FFBD2E"/><circle cx="60" cy="18" r="6" fill="#27C93F"/>
+  <text x="250" y="22" text-anchor="middle" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="12">hfpaper — mcp</text>
+  <g transform="translate(24, 56)">
+    <text y="0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#D4622B" font-weight="700">$ </tspan><tspan x="15.6" fill="#E8DFD3" >hfpaper mcp</tspan></text>
+    <text y="22" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >MCP server running on stdio...</text>
+    <text y="61.6" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" ># Claude Desktop / Cursor config:</text>
+    <text y="90.2" fill="#E8DFD3" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >{</text>
+    <text y="112.2" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  &quot;mcpServers&quot;: {</text>
+    <text y="134.2" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >    &quot;hfpaper&quot;: {</text>
+    <text y="156.2" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >      &quot;command&quot;: &quot;npx&quot;,</text>
+    <text y="178.2" fill="#A8C97F" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >      &quot;args&quot;: [&quot;-y&quot;, &quot;hfpaper&quot;, &quot;mcp&quot;]</text>
+    <text y="200.2" fill="#E8DFD3" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >    }</text>
+    <text y="222.2" fill="#E8DFD3" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >  }</text>
+    <text y="244.2" fill="#E8DFD3" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >}</text>
+    <text y="283.8" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" >7 tools · zero install · works everywhere</text>
+  </g>
+</svg>

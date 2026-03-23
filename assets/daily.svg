@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="412.6" viewBox="0 0 600 412.6">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="600" height="412.6" rx="10" fill="#2D2A26"/>
+  <rect width="600" height="36" rx="10" fill="rgba(0,0,0,0.2)"/>
+  <rect y="26" width="600" height="10" fill="rgba(0,0,0,0.2)"/>
+  <circle cx="16" cy="18" r="6" fill="#FF5F56"/><circle cx="38" cy="18" r="6" fill="#FFBD2E"/><circle cx="60" cy="18" r="6" fill="#27C93F"/>
+  <text x="300" y="22" text-anchor="middle" fill="#8A7E6E" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="12">hfpaper — daily</text>
+  <g transform="translate(24, 56)">
+    <text y="0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#D4622B" font-weight="700">$ </tspan><tspan x="15.6" fill="#E8DFD3" >hfpaper daily </tspan><tspan x="124.8" fill="#E8A87C" >--trending</tspan><tspan x="202.8" fill="#E8DFD3" > --limit 5</tspan></text>
+    <text y="33.0" fill="#F5F0EB" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">📰 Daily Papers — 5 results</text>
+    <text y="61.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#8A7E6E" >  1. </tspan><tspan x="39.0" fill="#F5F0EB" font-weight="700">Attention Residuals</tspan></text>
+    <text y="83.6" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >     </tspan><tspan x="39.0" fill="#E8A87C" >2603.15031</tspan><tspan x="117.0" fill="#8A7E6E" > · 137 ⬆</tspan><tspan x="179.4" fill="#8A7E6E" > · by Kimi Team</tspan></text>
+    <text y="114.39999999999999" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#8A7E6E" >  2. </tspan><tspan x="39.0" fill="#F5F0EB" font-weight="700">TradingAgents: Multi-Agent LLM Trading</tspan></text>
+    <text y="136.39999999999998" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >     </tspan><tspan x="39.0" fill="#E8A87C" >2412.20138</tspan><tspan x="117.0" fill="#8A7E6E" > · 26 ⬆</tspan><tspan x="171.6" fill="#8A7E6E" > · by Yijia Xiao et al.</tspan></text>
+    <text y="167.2" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#8A7E6E" >  3. </tspan><tspan x="39.0" fill="#F5F0EB" font-weight="700">AutoDev: Automated AI-Driven Development</tspan></text>
+    <text y="189.2" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >     </tspan><tspan x="39.0" fill="#E8A87C" >2403.08299</tspan><tspan x="117.0" fill="#8A7E6E" > · 12 ⬆</tspan><tspan x="171.6" fill="#8A7E6E" > · by Michele Tufano et al.</tspan></text>
+    <text y="220.0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#8A7E6E" >  4. </tspan><tspan x="39.0" fill="#F5F0EB" font-weight="700">DreamPartGen: Part-Level 3D Generation</tspan></text>
+    <text y="242.0" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >     </tspan><tspan x="39.0" fill="#E8A87C" >2603.19216</tspan><tspan x="117.0" fill="#8A7E6E" > · 8 ⬆</tspan><tspan x="163.8" fill="#8A7E6E" > · by Tianjiao Yu et al.</tspan></text>
+    <text y="272.8" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#8A7E6E" >  5. </tspan><tspan x="39.0" fill="#F5F0EB" font-weight="700">Temporal Reasoning in LLMs: Tokenisation</tspan></text>
+    <text y="294.8" font-family="JetBrains Mono, Menlo, Monaco, Consolas, monospace" font-size="13"><tspan x="0" fill="#E8DFD3" >     </tspan><tspan x="39.0" fill="#E8A87C" >2603.19017</tspan><tspan x="117.0" fill="#8A7E6E" > · 4 ⬆</tspan><tspan x="163.8" fill="#8A7E6E" > · by Gagan Bhatia et al.</tspan></text>
+  </g>
+</svg>

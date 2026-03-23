@@ -1,6 +1,6 @@
 {
   "name": "hfpaper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "AI research papers from your terminal — search, read, cite, and explore Hugging Face papers",
   "bin": {
     "hfpaper": "index.js"
